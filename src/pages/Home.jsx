@@ -5,7 +5,7 @@ const Home = () => {
         console.log(account)
     }, []);
     return (
-        <h1>I am home</h1>
+        <h1>Welcome What Would You Like...</h1>
     );
 }
  

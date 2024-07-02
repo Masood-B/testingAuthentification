@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { account } from '../appwrite/config'; // Make sure this is correctly configured
 
 function Register() {
-    const [userName, setUserName] = useState("");
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
@@ -15,7 +14,7 @@ function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (userName === "" || email === "" || password === "" || fullName === "" || phone === "") {
+        if (email === "" || password === "" || fullName === "" || phone === "") {
             setError("Please enter all required fields");
         } else {
             register();
@@ -26,7 +25,7 @@ function Register() {
         setLoading(true); // Set loading to true when starting the registration
         setError(""); // Clear previous errors
         try {
-            let person = await account.create('unique()', email, password, userName); // Adjust parameters as needed
+            let person = await account.create('unique()', email, password, fullName); // Adjust parameters as needed
             console.log(person);
             navigate('/login'); // Redirect to the login page on successful registration
         } catch (e) {
@@ -41,10 +40,6 @@ function Register() {
             <h1>Registration</h1>
             {error && <p className="error">{error}</p>} {/* Display error message */}
             <form onSubmit={handleSubmit}>
-                <label>
-                    Username:
-                    <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} aria-label="Username" />
-                </label>
                 <label>
                     Fullname:
                     <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} aria-label="Fullname" />
