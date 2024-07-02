@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { account } from "../appwrite/config";
 import { useNavigate } from "react-router-dom";
 
-function Dashboard() {
+function Profile() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
@@ -46,4 +46,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default Profile;
