@@ -37,6 +37,21 @@
   }
 }
 
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
 /* src/RegistrationForm.css */
 
 .registration-container {
@@ -347,5 +362,5 @@ button:hover {
   height: 100%;
   background: rgba(0, 0, 0, 0.5); /* Grey fade effect */
   z-index: 999; /* Ensure overlay is above the content but below the sidebar */
-  overflow: hidden; /* Ensure it doesn't affect layout */
+ 
 }

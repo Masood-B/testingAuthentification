@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+// src/components/Navbar.jsx
 
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 function Navbar() {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isSidebarOpen, setSidebarOpen] = React.useState(false);
+  const { isAuthenticated } = useAuth();
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -17,12 +20,9 @@ function Navbar() {
       {/* Sidebar */}
       {isSidebarOpen && (
         <div className="sidebar">
-          <button onClick={toggleSidebar} className="close-btn">
-            &times;
-          </button>
           <ul className="sidebar-list">
-          <li className="navbar-item">
-              <Link to="/profile">Profile</Link>
+            <li className="navbar-item">
+              <Link to="/profile" onClick={toggleSidebar}>Profile</Link>
             </li>
           </ul>
         </div>
@@ -39,9 +39,11 @@ function Navbar() {
             <li className="navbar-item">
               <Link to="/">Home</Link>
             </li>
-            <li className="navbar-item">
-              <Link to="/login">Login</Link>
-            </li>
+            {!isAuthenticated && (
+              <li className="navbar-item">
+                <Link to="/login">Login</Link>
+              </li>
+            )}
           </ul>
         </div>
       </nav>

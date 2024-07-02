@@ -25,7 +25,7 @@ function Register() {
         setLoading(true); // Set loading to true when starting the registration
         setError(""); // Clear previous errors
         try {
-            let person = await account.create('unique()', email, password, fullName); // Adjust parameters as needed
+            let person = await account.create('unique()', email, password, fullName, phone); // Adjust parameters as needed
             console.log(person);
             navigate('/login'); // Redirect to the login page on successful registration
         } catch (e) {
